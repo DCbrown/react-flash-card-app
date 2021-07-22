@@ -1,41 +1,22 @@
 import React, {useEffect, useState} from 'react';
 
-const AdminQuestionsList = ({questions}) => {
-    const [Qs, setQs] = useState({questions});
-
-    const handleDelete = (id) => {
-       
-        fetch('http://localhost:8000/questions/' + id, {
-            method: 'DELETE',
-        }).then(() => {
-            alert('Question Deleted');
-        })
-        window.location.reload(false);
-    }    
-
-    /*
-    useEffect(() => { 
-        setQs(questions)
-        console.log(Qs);
-    }, [Qs, questions]);
-    */
+const AdminQuestionsList = ({qs, onDelete}) => {
 
     return (
-        <div>
-          {questions && questions.map((question) => (
-              <div key={question.id}>
-                <p><u>{question.question}</u></p>
-                <p>{question.option1}</p>
-                <p>{question.option2}</p>
-                <p>{question.option3}</p>
-                <p>{question.option4}</p>
-                <h5>Correct Answer: {question.correctAnswer}</h5>
-                <button onClick={() => handleDelete(question.id)}>Delete</button>
+        <>
+          {qs.map((q) => (
+              <div key={q.id}>
+                <p><u>{q.question}</u></p>
+                <p>{q.option1}</p>
+                <p>{q.option2}</p>
+                <p>{q.option3}</p>
+                <p>{q.option4}</p>
+                <h5>Correct Answer: {q.correctAnswer}</h5>
+                <button onClick={() => onDelete(q.id)}>Delete</button>
                 <hr></hr>
               </div>
           ))}  
-          {!questions && <p>"no questions"</p>}
-        </div>
+        </>
     )
 }
 

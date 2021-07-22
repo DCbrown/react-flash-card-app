@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
-export const AdminForm = () => {
-    const [question, setQuestion] = useState('');
+export const AdminForm = ({ onAdd }) => {
+    const [q, setQ] = useState('');
     const [option1, setOption1] = useState('');
     const [option2, setOption2] = useState('');
     const [option3, setOption3] = useState('');
@@ -9,21 +9,12 @@ export const AdminForm = () => {
     const [correctAnswer, setCorrectAnswer] = useState('');
     const [isPending, setIsPending ] = useState(false);
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const flashCard = {question, option1, option2, option3, option4, correctAnswer}
 
-        setIsPending(true);
-        
-        fetch('http://localhost:8000/questions', {
-            method: 'POST',
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify(flashCard)
-        }).then(() => {
-            alert('Question Added!');
-            setIsPending(false);
-        })
-        setQuestion('')    
+        onAdd({ q, option1, option2, option3, option4, correctAnswer})
+
+        setQ('')    
         setOption1('');
         setOption2('');
         setOption3('');
@@ -40,8 +31,8 @@ export const AdminForm = () => {
                 <br/>
                 <textarea 
                     required 
-                    value={question} 
-                    onChange={(e) => setQuestion(e.target.value)}></textarea>
+                    value={q} 
+                    onChange={(e) => setQ(e.target.value)}></textarea>
                 <br/>
                 <label>Option 1</label>
                 <br/>
@@ -83,7 +74,7 @@ export const AdminForm = () => {
                    {!option4 || <option value={option4}>{option4}</option>}
                 </select>
                 <br/>
-                {!isPending && <button disabled={!question || !option1 || !option2 || correctAnswer === ""}>Submit</button> }
+                {!isPending && <button disabled={!q || !option1 || !option2 || correctAnswer === ""}>Submit</button> }
                 {isPending && <button disabled>Adding Questions... </button>}
             </form>
         </div>
