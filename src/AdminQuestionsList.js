@@ -6,7 +6,7 @@ const AdminQuestionsList = ({qs, onDelete}) => {
         <>
           {qs.map((q) => (
               <div key={q.id}>
-                <p><u>{q.question}</u></p>
+                <p><u>{q.q}</u></p>
                 <p>{q.option1}</p>
                 <p>{q.option2}</p>
                 <p>{q.option3}</p>

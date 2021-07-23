@@ -50,7 +50,7 @@ export const Admin = () => {
 
     // Delete qs
     const deleteTask = async (id) => {
-        await fetch(`http://localhost:8000/${id}`, {
+        await fetch(`http://localhost:8000/questions/${id}`, {
             method: 'DELETE'
         })
 
