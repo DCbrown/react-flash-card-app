@@ -1,12 +1,32 @@
 import { useState, useEffect } from 'react'
 import AdminNavbar from './AdminNavbar';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AdminForm from './AdminForm';
 import AdminQuestionsList from './AdminQuestionsList';
-import useFetch from './useFetch';
+import { makeStyles } from '@material-ui/core/styles';
 
 export const Admin = () => {
-    // const { data: questions, isFetchPending, error } = useFetch('http://localhost:8000/questions');
+
+      
+
+  const useStyles = makeStyles({
+    root: {
+      minWidth: 375,
+    },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+    
+  });
+
+  const classes = useStyles();
 
     const [qs, setQs] = useState([]);
 
@@ -46,15 +66,20 @@ export const Admin = () => {
         const data = await res.json();
 
         setQs([...qs, data])
+
+        alert('Question Submitted!')
     }
 
     // Delete qs
     const deleteTask = async (id) => {
-        await fetch(`http://localhost:8000/questions/${id}`, {
-            method: 'DELETE'
-        })
+        if (window.confirm('Are you sure you want to delete?')) {
+            await fetch(`http://localhost:8000/questions/${id}`, {
+                method: 'DELETE'
+            })
+            setQs(qs.filter((q) => q.id !== id))
+        }
 
-        setQs(qs.filter((q) => q.id !== id))
+       
     }
 
     console.log(qs)
@@ -62,8 +87,8 @@ export const Admin = () => {
     return (
         <div>
             <AdminNavbar />
-                <AdminForm onAdd={addQ} />
-                <AdminQuestionsList qs={qs} onDelete={deleteTask}/>
+            <AdminForm onAdd={addQ} />
+            <AdminQuestionsList qs={qs} onDelete={deleteTask}/>
         </div>
     )
 }
