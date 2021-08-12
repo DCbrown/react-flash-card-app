@@ -35,6 +35,15 @@
       "option4": "Hyper Text Marking Language",
       "correctAnswer": "Hyper Text Markup Language",
       "id": 6
+    },
+    {
+      "q": "Is this a question?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "",
+      "option4": "",
+      "correctAnswer": "Yes",
+      "id": 7
     }
   ]
 }

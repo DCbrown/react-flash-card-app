@@ -1,14 +1,12 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
+import FlashCard from './FlashCard';
 
 const Test = ({qs}) => {
+
     const useStyles = makeStyles({
         root: {
-          maxWidth: 500,
           float: 'left',
-          margin: '20px'
+          margin: '10px',
         },
         bullet: {
           display: 'inline-block',
@@ -27,23 +25,10 @@ const Test = ({qs}) => {
 
     return (
         <>
-     
           {qs.map((q) => (
-            <Card className={classes.root}>
-              <CardContent>
-                <div key={q.id}>
-                  <p><u>{q.q}</u></p>
-                  <ul>
-                    <li>{q.option1}</li>
-                    <li>{q.option2}</li>
-                    <li>{q.option3}</li>
-                    <li>{q.option4}</li>
-                  </ul>
-                 
-                  <p><strong>Correct Answer: {q.correctAnswer}</strong></p>
-                </div>
-              </CardContent>
-            </Card>
+            <div key={q.id} className={classes.root}>
+              <FlashCard className={classes.card} qs={q} /> 
+            </div>
           ))}  
         </>
     )

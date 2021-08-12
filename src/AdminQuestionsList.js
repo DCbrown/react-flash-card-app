@@ -32,17 +32,16 @@ const AdminQuestionsList = ({qs, onDelete}) => {
 
     return (
         <>
-     
           {qs.map((q) => (
-            <Card className={classes.root}>
+            <Card key={q.id} className={classes.root}>
               <CardContent>
-                <div key={q.id}>
+                <div >
                   <p><u>{q.q}</u></p>
                   <ul>
                     <li>{q.option1}</li>
                     <li>{q.option2}</li>
-                    <li>{q.option3}</li>
-                    <li>{q.option4}</li>
+                    { q.option3 === "" || <li>{q.option3}</li> }
+                    { q.option4 === "" || <li>{q.option4}</li> }
                   </ul>
                  
                   <p><strong>Correct Answer: {q.correctAnswer}</strong></p>
