@@ -1,32 +1,9 @@
 import { useState, useEffect } from 'react'
-import AdminNavbar from './AdminNavbar';
 import AdminForm from './AdminForm';
 import AdminQuestionsList from './AdminQuestionsList';
-import { makeStyles } from '@material-ui/core/styles';
+import Row from 'react-bootstrap/Row';
 
 export const Admin = () => {
-
-      
-
-  const useStyles = makeStyles({
-    root: {
-      minWidth: 375,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-    
-  });
-
-  const classes = useStyles();
 
     const [qs, setQs] = useState([]);
 
@@ -86,9 +63,10 @@ export const Admin = () => {
 
     return (
         <div>
-            <AdminNavbar />
             <AdminForm onAdd={addQ} />
-            <AdminQuestionsList qs={qs} onDelete={deleteTask}/>
+            <Row>
+                <AdminQuestionsList qs={qs} onDelete={deleteTask}/>    
+            </Row>
         </div>
     )
 }

@@ -1,8 +1,10 @@
-import './App.css';
 import Admin from './Admin';
 import Test from './Test'
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 function App() {
   const [qs, setQs] = useState([]);
@@ -27,13 +29,19 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div>
         <Switch>
           <Route exact path="/">
-            <Test qs={qs} />
+            <Container>
+              <Row>
+                <Test qs={qs} />
+              </Row>
+            </Container>   
           </Route>
           <Route path="/admin">
-            <Admin qs={qs} />
+            <Container>
+              <Admin qs={qs} />
+            </Container>  
           </Route>
         </Switch>
       </div>
