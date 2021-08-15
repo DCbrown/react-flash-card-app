@@ -24,6 +24,7 @@ export const Admin = () => {
     }
 
     // Fetch Q
+    // Fetch One Question
     const fetchQ = async (id) => {
         const res = await fetch(`http://localhost:8000/questions/${id}`)
         const data = await res.json();
@@ -58,9 +59,6 @@ export const Admin = () => {
 
        
     }
-
-    console.log(qs)
-
     return (
         <div>
             <AdminForm onAdd={addQ} />

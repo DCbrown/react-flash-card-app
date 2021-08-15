@@ -25,8 +25,6 @@ function App() {
         return data;
     }
 
-    console.log(qs)
-
   return (
     <Router>
       <div>
@@ -40,7 +38,7 @@ function App() {
           </Route>
           <Route path="/admin">
             <Container>
-              <Admin qs={qs} />
+              <Admin />
             </Container>  
           </Route>
         </Switch>

@@ -56,7 +56,7 @@ export const AdminForm = ({ onAdd }) => {
                             onFocus={(e) => setOption2(e.target.value)}
                             onChange={(e) => setOption2(e.target.value)} 
                             type="text" />
-                    </Form.Group>
+                </Form.Group>
             </Col>   
             <Col xs={9}>
                 <Form.Group 
@@ -67,7 +67,7 @@ export const AdminForm = ({ onAdd }) => {
                             onFocus={(e) => setOption3(e.target.value)}
                             onChange={(e) => setOption3(e.target.value)} 
                             type="text" />
-                    </Form.Group>
+                </Form.Group>
             </Col>    
             <Col xs={9}>
             <Form.Group 
