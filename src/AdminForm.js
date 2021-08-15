@@ -97,7 +97,7 @@ export const AdminForm = ({ onAdd }) => {
                 <Button type="submit" 
                         variant="primary"
                         disabled={!q || !option1 || !option2 || correctAnswer === ""}
-                        >Primary</Button>
+                        >Submit</Button>
             </form>
         </div>
     )

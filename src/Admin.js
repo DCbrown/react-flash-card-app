@@ -57,7 +57,6 @@ export const Admin = () => {
             setQs(qs.filter((q) => q.id !== id))
         }
 
-       
     }
     return (
         <div>
